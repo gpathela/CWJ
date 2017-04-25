@@ -1,0 +1,29 @@
+{% if applications %}
+
+<ul>
+        {% for application in applications %}
+            <li><a href="/application/{{application.id}}/" class='content'>{{ application.subject }}</a></li>
+        {% endfor %}
+    </ul>
+
+{% elif message %}
+<h2> {{message}} </h2>
+
+
+
+{% endif %}
+
+{% block extra_js %}
+<script type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+  $(".content").click(function(e){
+    e.preventDefault(); // will not follow link
+    $("#profile").load($(this).attr('href'));
+  });
+});
+</script>
+
+
+
+{% endblock extra_js %}

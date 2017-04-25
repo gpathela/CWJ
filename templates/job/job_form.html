@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+
+{% load staticfiles %}
+
+
+{% block content %}
+     
+<form method=POST> {% csrf_token %}
+{{form.as_p}}
+<input type = 'submit', name = 'Submit'>
+</form>
+
+
+
+
+
+<script type="text/javascript">
+
+jQuery(document).ready(function(){
+	$('#id_start_date').attr('readonly', true);
+	$('#id_activate_date').attr('readonly', true);
+   $("#id_start_date").datepicker({
+   		csrfmiddlewaretoken: "{% csrf_token %}",
+   		dateFormat: "dd/mm/yy",
+   		readonly: true,
+        minDate: 0,
+        maxDate: "+60D",
+        onSelect: function(selected) {
+          $("#id_activate_date").datepicker("option","minDate", selected)
+        }
+    });
+
+    $("#id_activate_date").datepicker({
+        csrfmiddlewaretoken: "{% csrf_token %}",
+        dateFormat: "dd/mm/yy",
+        minDate: 0,
+        maxDate:"+30D",
+        numberOfMonths: 1,
+        onSelect: function(selected) {
+           $("#txtFromDate").datepicker("option","maxDate", selected)
+        }
+    });
+});
+    
+        </script>
+
+
+{% endblock %}
+
+
+
+

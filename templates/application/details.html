@@ -1,0 +1,28 @@
+<a class="btn btn-md btn-primary" href="/contact/{{application.user.id}}/{{application.job.id}}">Contact</a>
+{% if application.status.id != 2 %}
+<a href="/application/status/{{application.job.id}}/2/" class="btn btn-md btn-primary" id="load_here">Shortlist</a>
+{% else %}
+<a href="/application/status/{{application.job.id}}/3/" class="btn btn-md btn-primary" id="load_here">Select</a>
+{% endif %}
+{% if application.status.id != 4 %}
+<a href="/application/status/{{application.job.id}}/4/" class="btn btn-md btn-primary" id="load_here">Reject</a>
+{% endif %}
+<h1>{{ application.subject }}</h1>
+
+<h3>Message: {{application.message}}</h3>
+
+<h2>Applied On: {{application.application_on}}</h2>
+
+<h2><a href="{{application.resume.url}}">Resume</a></h2>
+
+
+<h1>{{application.status.id}}</h1>
+
+
+<script type="text/javascript"></script>
+<script>
+$("#inbox-div").on("click", "a", function (e) {
+    $("#inbox-div").load($(this).attr("href"));
+    e.preventDefault();
+});
+</script>

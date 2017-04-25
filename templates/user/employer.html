@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+
+{% load staticfiles %}
+
+
+{% block content %}
+
+
+<div style="float:left; width:20%;">
+
+<b> Your Jobs </b>
+
+<ul>
+        {% for job in jobs %}
+            <li><a href="/job/{{job.id}}/applications/" class='load-content'>{{ job.title }}</a></li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+
+<div style="float:left; width:20%;" id = "applications">
+
+<b> Applications </b>
+
+</div>
+
+<div style="float:right; width:60%;" id = "profile">
+
+<b> Profile </b>
+
+</div>
+  
+   
+
+
+
+
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+  $(".load-content").click(function(e){
+    e.preventDefault(); // will not follow link
+    $("#applications").load($(this).attr('href'));
+    $('#profile').empty();
+  });
+});
+</script>
+
+
+
+{% endblock extra_js %}

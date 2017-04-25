@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% load staticfiles %}
+
+
+{% block content %}
+
+<form method=POST enctype="multipart/form-data"> {% csrf_token %}
+{{form.as_p}}
+<input class="btn btn-lg btn-primary" type = 'submit', name = 'Submit'>
+</form>
+
+
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+  <script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" >
+    $(document).ready(function(){
+        $("#id_subject").attr('placeholder', "Your Name, Relevent Exp, Can start on date");
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% load staticfiles %}
+
+
+{% block content %}
+  <body>   
+<form method=POST> {% csrf_token %}
+{{form.as_p}}
+<input type = 'submit', name = 'Submit'>
+</form>
+
+<script type="text/javascript">
+
+jQuery(document).ready(function(){
+	$('#id_username').attr('readonly', true);
+	$('#id_username').css('background-color' , '#DEDEDE');
+	$('#id_email').attr('readonly', true);
+	$('#id_email').css('background-color' , '#DEDEDE');
+});
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+
+{% load staticfiles %}
+
+
+{% block content %}
+
+
+<div style="float:left; width:20%;">
+
+<ul>
+        {% for job in object_list %}
+            <li><a href="{{job.id}}" class='load-content'>{{ job.title }}</a></li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+
+<div style="float:right; width:80%;" id = "details">
+Right  <!-- Set Div As your requirement -->
+</div>
+  
+   
+
+
+
+
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+  $(".load-content").click(function(e){
+    e.preventDefault(); // will not follow link
+    $("#details").load($(this).attr('href'));
+  });
+});
+</script>
+
+
+
+{% endblock extra_js %}
